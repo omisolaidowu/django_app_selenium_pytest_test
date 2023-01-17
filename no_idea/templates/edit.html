@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	
+</head>
+<nav><a href="/" style="font-size: 30; text-decoration:none;"><h1> Home Page</h1></a></nav>
+<body>
+	
+	<form id= "form1" action='.' method="POST" enctype="multipart/form-data"> {% csrf_token %}
+<div>{{ form.as_p }}</div>
+
+<input type='submit' value='Save and Preview' />
+	</form>
+
+<div>{{ post.user }}</div>
+
+<div>
+	<h1>Your Previous Posts</h1>
+		
+	{% for lis in p_list %}
+<strong>{{lis.title}}</strong>  {% if user.is_authenticated %}<a href="/edit_post/{{lis.pk}}-{{ lis.user_id }}"> Edit Post</a>{% endif %} -- <a href="/eachpost/{{ lis.slug }}-{{lis.category_id}}" style="text-decoration: none;">Preview Post</a> >>>> Published = <strong>{{ lis.published }}</strong>, and filed under <strong>{{ lis.category.name }}</strong><br>
+{% endfor %}
+</div>
+
+
+	
+
+</body>
+</html>

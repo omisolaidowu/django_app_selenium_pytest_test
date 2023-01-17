@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+{% load static %}
+{% static "image" as baseUrl %}
+
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="https://maxcdn.bootsrapcdn.com/3.3.7/js/bootsrap.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<nav id="homenav" class="homenav">
+		<a href="/" id="home" class="home"><h1 style="font-size:40px; text-decoration: none; color: white;">CodePrem</h1></a>
+		<a href=""></a>
+
+
+	
+
+	</nav>
+</head>
+<body id="bod" class="bod">
+<div id="art" class="art">
+<div id="title" class="title"><h1>{{ instance.title }}</h1></div>
+<div id="date" class="date">Published on {{ instance.date_created }} by {{ instance.user }}</div>
+{% if instance.pictures %}
+<div id="image" class="image">
+	<img src="{{instance.pictures.url}}" width="400" height="400">
+</div>
+{% else %}
+{% endif %}
+<div id="desc" class="desc">{{ instance.desc_of_art }}</div>
+<div id="about" class="about" style="font-size: 20px;">{{ instance.content }}</div>
+</div>
+
+<div id="comment-container" class="comment-container">
+<!-- <div> -->
+	<!-- <h2>You Might Also Like:</h2>
+	 -->
+	<!-- {% for postcat in cat_list_2 %}
+	<strong><i><a href="/eachpost/{{ postcat.slug }}-{{ postcat.category_id }}">{{ postcat.title }}</a></i></strong><br>
+	{% endfor %}
+</div> -->
+	
+<form method="POST" action=".">{% csrf_token %}
+	{{ form }}
+	<input type="submit" value="Post comment" required="required" class="input-hidden">
+</form>
+
+</hr>
+
+<h3>Comments:</h3>
+{% for comment in comments %}
+
+<blockquote>
+
+	<p>{{ comment.content }}</p>
+	<footer><strong>|By {{ comment.user }}</strong> | {{ comment.timestamp|timesince }} ago | {% if comment.children.count > 0 %}{{ comment.children.count }} Comment{% if comment.children.count > 1 %}s{% endif %} | {% endif %} <a class= "comment-reply-btn"href="#">Reply</a></footer>
+<div class="comment-reply" style="display: none;">
+	{% for childcom in comment.children %}
+	<blockquote>
+	<p>{{ childcom.content }}</p>
+	<footer><strong>|By</strong> {{ childcom.user }} <strong>|</strong> {{ childcom.timestamp|timesince }} ago<strong>|</strong></footer>
+	</blockquote>
+	{% endfor %}
+
+
+	<form method="POST" action=".">{% csrf_token %}
+	{{ form }}
+	<input type="hidden" name="parent_id" value="{{ comment.id }}">
+	<input type="submit" value="Reply" required="required" class="input-hidden">
+</form>
+</div>
+
+</blockquote>
+</hr>
+{% endfor %}
+</div>
+
+</div>
+</body>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("about").each(function(){
+
+		var content = $(this).text()
+		console.log(content)
+		var markedContent = marked(Content)
+		console.log(markedContent)
+		$(this).html(markedContent)
+
+	})
+
+
+		$(".about img").each(function(){
+			$(this).addClass("img-responsive")
+		})
+	})
+
+
+$(".comment-reply-btn").click(function(event){
+
+	event.preventDefault();
+	$(this).parent().next(".comment-reply").fadeToggle();
+})
+	
+
+
+</script>
+
+<style type="text/css">
+	
+	.art{
+		background: white;
+		margin-right: 200px;
+		margin-left: 200px;
+
+	
+	}
+
+	@viewport {
+  width: device-width ;
+  zoom: 1.0 ;
+}
+
+
+@-ms-viewport {
+  width: device-width ;
+}
+
+@media screen and (max-width: 600px) {
+  /* comes into effect for screens larger than or equal to 481 pixels */
+
+
+  
+  #title {
+    width: 400px ;
+    text-align:center;
+    background: white;
+    padding-left: -400px;
+    padding-right: -120px;
+    margin-left: -190px;
+  }
+
+  #date{
+  	padding-right: -120px;
+  	margin-left: -190px;
+  	width:400px;
+  }
+
+  #desc{
+  	padding-right: 0px;
+  	margin-left: -563px;
+  	padding-left: -20px;
+  	width:400px;
+
+
+  }
+
+  #about{
+  	
+  	padding-right: 0px;
+  	margin-left: -500px;
+  	padding-left: 300px;
+  	width:400px;
+  	image-rendering: auto;
+  }
+
+  #image{
+
+  	padding-left: -30px;
+  	margin-left: -190px;
+  }
+
+  #comment-container{
+  	
+  	padding-top: 50px;
+  	margin-top: 50px;
+  }
+  
+  .img-responsive{
+		
+		margin-right: 300px;
+		max-width: 425px;
+		max-height: 400px;
+		background: red;
+		padding-right: 0px;
+		margin-right: -100px;
+
+  
+}
+
+}
+
+
+	.date{
+
+		margin-left: 300px;
+		align-self: center;
+		background: white;
+		display: inline-block;
+	}
+
+
+	.home{
+		text-decoration-line: none;
+		text-decoration: none;
+	}
+
+
+	.about{
+		content-position: absolute;
+		padding-left: 50px;
+		padding-right:150px;
+		margin-left: -20px;
+		margin-right: 250px;
+		background: white;
+		padding-top: 15px;
+
+
+
+		
+	}
+
+	.homenav{
+
+		text-align: center;
+		background-color: grey;
+	}
+
+	.image{
+		display: block;
+		margin-left: 0px;
+		text-align:center;
+		align-self:center;
+		background: white;
+	}
+
+	.title{
+		text-align: center;
+
+	}
+	.desc{
+
+		
+		text-align: justify;
+		padding-left: 380px;
+		padding-right:280px;
+		margin-left: -182px;
+		margin-right: -75px;
+
+
+	}
+	.comment-container{
+		
+		margin-top: 100px;
+		padding-top: -300px;
+	}
+</style>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	{% for my_list in queryset %}
+<p>{{ my_list.id }} - <strong>{{ my_list.title }}--</strong> <a href="/edit_post/{{my_list.pk}}-{{ my_list.user_id }}"> Edit Post</a>   ---   <a href="/delete/{{my_list.pk}}">Delete this Post</a>-- <strong>By {{my_list.user}}</strong></p>
+
+{% endfor %}
+
+</body>
+</html>

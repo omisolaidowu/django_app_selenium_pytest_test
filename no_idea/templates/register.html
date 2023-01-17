@@ -1,0 +1,17 @@
+
+<body style="background-image: linear-gradient(red, green, green);">
+	<header>
+		<section>
+			<div>
+				<a href="/" style="text-decoration: none; color:grey"><strong>Home</strong></strong></a>
+			</div>
+		</section>
+	</header>
+	<form action='.' method="POST"> {% csrf_token %}
+		{{ form.as_p }}
+		
+		<input type='submit' value='Save' />
+		
+	</form>
+	
+</body>

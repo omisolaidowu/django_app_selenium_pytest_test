@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+	{{ content | safe }}
+	{{ form.media }}
+
+	<title>Content Management System</title>
+	<!--- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script>tinymce.init({selector:'textarea'});
+
+tinymce.init({
+    selector:'.textarea',
+    setup: function (editor) {
+        textarea.on('submit', function (e) {
+            textarea.save();
+        });
+    }
+ });
+
+
+</script> 
+  <script src="{% static 'no_idea/js/tinymce/tinymce.min.js' %}">
+
+
+  </script>
+  <script type="text/javascript" src="{% static 'no_idea/js/tinymce/custom.js' %}" >
+  	
+
+
+  </script> !--->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js">
+</script>
+
+
+</head>
+<nav>
+<h1><a href="/" style="text-decoration: none; size: 10px; color:black"><strong>Home</strong></a></h1>
+</nav>
+<body>
+
+	<nav>
+		Hello <strong>{{user.username}}</strong>
+	{% if user.is_authenticated %}
+	<a href="/logout">logout</a>
+	{% else %}
+	<a href="/login">login to make a post</a>
+	{% endif %}
+
+	<div>
+
+<form id= "form1" action='.' method="POST" enctype="multipart/form-data"> {% csrf_token %}
+{% autoescape off %}
+		{{ postForm.as_p }}
+{% endautoescape %}
+
+	<button type='submit' name = "submit" id="submit" class="submit-button">Submit</button>
+		
+	</form>
+		<h1>Your Previous Posts</h1>
+		
+	{% for my_lis in my_list_1 %}
+<strong>{{my_lis.title}}</strong>  {% if user.is_authenticated %}<a href="/edit_post/{{my_lis.pk}}-{{ my_lis.user_id }}"> Edit Post</a>{% endif %} <strong>|</strong> <a href="/eachpost/{{ my_lis.slug }}-{{my_lis.category_id}}" style="text-decoration: none;">Preview Post</a> <strong>|</strong> Published = <strong>{{ my_lis.published }}</strong> <strong>|</strong> Filed under <strong>{{ my_lis.category.name }}</strong><br>
+
+
+	{% endfor %}
+	</div>
+		
+
+<style type="text/css">
+	
+#form1
+{
+
+	padding-left: 160px;
+	padding-right: 50px;
+	margin-left: 70px;
+	margin-right: 150px;
+}
+
+
+</style>
+
+</body>
+
+</html>

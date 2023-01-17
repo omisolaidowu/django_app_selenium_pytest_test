@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<nav>
+		Hello <strong>{{user.username}}</strong>
+	{% if user.is_authenticated %}
+	<a href="/logout">logout</a>
+	{% else %}
+	<a href="/login">login to make a post</a>
+	{% endif %}
+	<a href="/engine"><h2>Create a New Post</h2></a>
+	
+
+
+
+	</nav>
+	<div><h1>All Your Posts</h1></div> 
+	{% for lis in my_list %}
+<p>{{ lis.id }} - <strong>{{ lis.title }}--</strong> {% if user.is_authenticated %}<a href="/edit_post/{{lis.pk}}-{{ lis.user_id }}"> Edit Post</a>{% endif %} -- <a href="/eachpost/{{ lis.slug }}-{{lis.pk}}" style="text-decoration: none;">Preview Post</a></p>
+{% endfor %}
+
+
+	
+
+
+
+</body>
+</html>

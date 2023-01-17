@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html>
+	
+
+{% load static %}
+{% static "image" as baseUrl %}
+<head>
+	{{form.media}}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Blog</title>
+</head>
+<body>
+
+	<nav>
+		
+	{% for my_cat in data_1 %}
+
+	<a href="/catlist/{{ my_cat.pk }}">{{ my_cat.name }}</a>
+	{% endfor %}
+
+	</nav>
+	<nav id="homenav" class="homenav"><h1><a href="/" style="text-decoration: none; font-size: 40px; color:white"><strong>CodePrem</strong></a></h1>
+	</nav>
+
+{% for my_data in page_obj %}
+
+<div id="title" class="title"><h1><a href="/eachpost/{{ my_data.slug }}-{{ my_data.category_id }}" style="text-decoration: none; font-size: 30px;">{{ my_data.title }}</a></h1></div>
+<div id="date" class="date">
+Posted on {{my_data.date_created}} by {{my_data.user}}
+</div>
+<div id="im" class="im">
+	{% if my_data.pictures %}<a href="/eachpost/{{ my_data.slug }}-{{ my_data.category_id }}">
+<img src="{{my_data.pictures.url}}" width="400" height="400"></a>
+</div>
+
+{% else %}
+{% endif %}
+
+<div id="desc" class="desc">
+{{ my_data.desc_of_art }} <a href="/eachpost/{{ my_data.slug }}-{{ my_data.category_id }}" style="text-decoration: none; font-size: 20px;">continue reading...</a>
+</div>
+
+
+
+{% endfor %}
+<div>
+	<span class="step-links">
+        {% if page_obj.has_previous %}
+            <h3 style="word-spacing: 10px;"><a href="?page=1" 
+            	style="text-decoration: none;">&laquo; first</a>
+            	<a href="?page={{ page_obj.previous_page_number }}" 
+            	style="text-decoration: none;">previous</a></h3>
+        {% endif %}
+
+        
+        {% if page_obj.has_next %}
+            <h3 style="word-spacing: 10px;">
+            	<a href="?page={{ page_obj.next_page_number }}" 
+            	style="text-decoration: none;">next</a>
+            	<a href="?page={{ page_obj.paginator.num_pages }}" 
+            	style="text-decoration: none;">last &raquo;</a>
+        	</h3>
+        {% endif %}
+
+        <span class="current" id="currennt">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+    </span>
+</div>
+
+
+
+</body>
+
+<style type="text/css">
+@viewport {
+  width: device-width ;
+  zoom: 1.0 ;
+}
+
+
+@-ms-viewport {
+  width: device-width ;
+}
+
+@media screen and (max-width: 600px) {
+  /* comes into effect for screens larger than or equal to 481 pixels */
+  #title {
+    width: 400px ;
+    text-align:center;
+    background: white;
+    padding-left: -400px;
+    padding-right: -120px;
+    margin-left: -0px;
+  }
+
+  #date{
+  	padding-right: -300px;
+  	margin-left: 10px;
+  }
+
+  #desc{
+  	padding-right: 0px;
+  	margin-left: -260px;
+  	padding-left: -20px;
+  	width:400px;
+
+
+  }
+}
+
+	
+.im{
+	display: block;
+	
+
+	margin-left: 0px;
+	text-align:center;
+	align-self:center;
+	background: white;
+	
+}
+.date{
+	margin-left: 500px;
+	
+	align-self: center;
+
+	
+	background: white;
+	display: inline-block;
+}
+
+.title{
+	object-position: center;
+	background-color: white;
+	
+	margin-right: 300px;
+	margin-left: 300px;
+
+	text-align: center;
+
+	
+	
+	
+	
+
+
+}
+
+.content{
+	background: white;
+	padding-left: 270px;
+	margin-right: 100px;
+	margin-left: 100px;
+
+}
+
+.homenav{
+	background-color: grey;
+	text-align: center;
+	
+
+}
+
+.desc{
+	
+	background-color: white;
+	text-align: justify;
+	padding-left: 280px;
+	padding-right:280px;
+	margin-left: 50px;
+	margin-right: 50px;
+	
+
+
+}
+</style>
+
+</html>
