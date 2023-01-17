@@ -1,13 +1,4 @@
 from selenium import webdriver
-import pytest
-
-
-# @pytest.fixture(scope="module")
-# def driver():
-#     driver = webdriver.Chrome()
-#     yield driver
-#     driver.implicitly_wait('20')
-#     driver.quit()
 
 from selenium import webdriver
 
@@ -44,7 +35,6 @@ class testSet:
             )
         self.desired_caps = desired_caps
         self.driver = webdriver.Remote(command_executor=self.grid_url, desired_capabilities= self.desired_caps)
-        # self.driver = webdriver.Chrome()
         
     def testSetup(self):
         self.driver.implicitly_wait(10)
