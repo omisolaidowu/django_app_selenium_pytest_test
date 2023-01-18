@@ -5,15 +5,15 @@ A demonstration of how to test Django app locally using Selenium and Pytest whil
 
 Activate your virtual environment and install dependencies:
 
-`pip -r install requirements.txt`
+```pip -r install requirements.txt```
 
 Cd into blog-app/blog-app from the base directory:
 
-`cd blog-app/blog-app`
+```cd blog-app/blog-app```
 
 Run the test by using the pytest command:
 
-`pytest`
+```pytest```
 
 Pytest will look for the pytest.ini module and use that to point the test to the Django app settings. Pytest then automatically discovers declared test fixtures by looking inside the conftest.py file before running the test_module.py file. 
 
