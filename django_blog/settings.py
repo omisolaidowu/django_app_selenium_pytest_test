@@ -91,7 +91,7 @@ DATABASES = {
 
 DATABASES['default'] = dj_database_url.config(os.getenv('POSTGRES_URL'))
 
-psycopg2.connect(DATABASES)
+# psycopg2.connect(DATABASES)
 
 
 # DATABASES = {
