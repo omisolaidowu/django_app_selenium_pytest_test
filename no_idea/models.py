@@ -6,7 +6,6 @@ from django.utils.text import slugify
 from django.urls import reverse
 from django.db.models.signals import pre_save
 from django.contrib.contenttypes.models import ContentType
-from comments.models import Comment
 from markdown_deux import markdown
 from django.utils.safestring import mark_safe
 

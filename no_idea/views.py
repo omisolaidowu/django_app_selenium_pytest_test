@@ -9,7 +9,6 @@ try:
 except:
     pass
 #from .forms import ImageForm
-from django.contrib.auth.decorators import login_required
 from .forms import *
 from django.forms import modelformset_factory
 from django.contrib.auth.decorators import login_required
@@ -22,9 +21,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User, auth
 from django.contrib.auth import authenticate, login, logout
 from django.core.paginator import Paginator
-from comments.forms import commentform 
 from django.contrib.contenttypes.models import ContentType
-from comments.models import Comment
 # Create your views here.
 
 

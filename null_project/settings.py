@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'no_idea',
     'django_summernote',
-    'comments',
 
 ]
 

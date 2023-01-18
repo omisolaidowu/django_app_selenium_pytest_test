@@ -3,7 +3,6 @@ from django.contrib import admin
 # Register your models here.
 from .models import art_gallery
 # from .models import category
-from comments.models import Comment
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -14,5 +13,4 @@ class AdminPost(SummernoteModelAdmin):
 # Register your models here.
 admin.site.register(art_gallery, AdminPost)
 # admin.site.register(category)
-admin.site.register(Comment)
 
