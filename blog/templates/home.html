@@ -24,12 +24,12 @@
 
 {% for my_data in page_obj %}
 
-<div id="title" class="title"><h1><a href="/eachpost/{{ my_data.slug }}-{{ my_data.category_id }}" style="text-decoration: none; font-size: 30px;">{{ my_data.title }}</a></h1></div>
+<div id="title" class="title"><h1><a href="/eachpost/{{ my_data.slug }}" style="text-decoration: none; font-size: 30px;">{{ my_data.title }}</a></h1></div>
 <div id="date" class="date">
 Posted on {{my_data.date_created}} by {{my_data.user}}
 </div>
 <div id="im" class="im">
-	{% if my_data.pictures %}<a href="/eachpost/{{ my_data.slug }}-{{ my_data.category_id }}">
+	{% if my_data.pictures %}<a href="/eachpost/{{ my_data.slug }}">
 <img src="{{my_data.pictures.url}}" width="400" height="400"></a>
 </div>
 

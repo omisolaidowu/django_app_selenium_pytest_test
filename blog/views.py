@@ -1,28 +1,22 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import art_gallery
-# from .models import category
-#from .models import Images
 from .forms import my_engine
 
 try:
     from urllib.parse import quote_plus
 except:
     pass
-#from .forms import ImageForm
 from .forms import *
-from django.forms import modelformset_factory
-from django.contrib.auth.decorators import login_required
+
 from django.contrib import messages
-from django.http import HttpResponseRedirect, HttpResponse, Http404
-from django.views import generic
-from django.views.generic.detail import DetailView
+from django.http import HttpResponseRedirect, Http404
+
 from django.shortcuts import redirect
-from django.urls import reverse
-from django.contrib.auth.models import User, auth
-from django.contrib.auth import authenticate, login, logout
+
+from django.contrib.auth.models import auth
 from django.core.paginator import Paginator
 from django.contrib.contenttypes.models import ContentType
-# Create your views here.
+
 
 
 def catlist(request):
@@ -38,19 +32,10 @@ def home(request):
     return render(request, 'home.html',  {"page_obj":page_obj, "data_1":data_1})
 
 
-"""def enter(request):
-	form = my_login()
-	if request.method=="POST":
-		form    = my_login(request.POST)
-		if form.is_valid():
-			login.objects.create(**form.cleaned_data)
-		form = my_login()
-	context ={"form": form}
-	return render(request, 'register.html', context)"""
 
 def engine(request, user_id):
     if (request.user.is_staff or request.user.is_superuser):
-        # my_list_1=art_gallery.objects.filter(user_id=user_id).order_by('-date_created')
+        
 
         if request.method=="POST":
             form = my_engine(request.POST or None, request.FILES or None)
@@ -88,43 +73,6 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('/login')
-
-"""@login_required
-def engine(request):
-
-    ImageFormSet = modelformset_factory(Images,
-                                        form=ImageForm, extra=3)
-    if request.method == "POST":
-    	postForm = my_engine(request.POST, request.FILES)
-    	formset = ImageFormSet(request.POST, request.FILES,
-                               queryset=Images.objects.none())
-    	if postForm.is_valid() and formset.is_valid():
-    		post_form = postForm.save(commit=False)
-    		post_form.user = request.user
-    		post_form.save()
-    		for form in formset.cleaned_data:
-    			if form:
-    				image = form["pictures"]
-    				photo = Images(post=post_form, pictures=image)
-    				photo.save()
-    		return HttpResponseRedirect("/account_view")
-    	else:
-            print(postForm.errors, formset.errors)
-    else:
-        postForm = my_engine()
-        formset = ImageFormSet(queryset=Images.objects.none())
-    return render(request, 'engine.html',
-                  {'postForm': postForm, 'formset': formset})"""
-
-
-
-
-
-
-"""class eachpost(DetailView):
-    model = art_gallery
-    query_pk_and_slug = True
-    template = posts.html"""
     
 
 def eachpost(request, slug):
@@ -136,48 +84,13 @@ def eachpost(request, slug):
     "object_id":instance.id
     }
 
-    form = commentform(request.POST or None, initial=initial_data)
-    if form.is_valid():
-
-        
-        
-        c_type =form.cleaned_data.get("content_type")
-        content_type = ContentType.objects.get(model=c_type)
-        object_id = form.cleaned_data.get("object_id")
-        content_data = form.cleaned_data.get("content")
-        parent_obj = None
-        try:
-            parent_id = int(request.POST.get("parent_id"))
-        except:
-            parent_id = None
-
-        if parent_id:
-            parent_qs = Comment.objects.filter(id=parent_id)
-            if parent_qs.exists() and parent_qs.count()==1:
-                parent_obj = parent_qs.first()
-        new_comment, created = Comment.objects.get_or_create(
-
-            user = request.user,
-            content_type = content_type,
-            object_id = object_id,
-            content = content_data,
-            parent = parent_obj,
-            )
-        return HttpResponseRedirect(new_comment.content_object.get_absolute_url())
-        
-    comments = instance.comments
-    #if each_data != each_data.get_slug():
     if instance.published==True:
-        return render(request, 'posts.html', {"instance":instance, "cat_list_2":cat_list_2, "form":form, "comments":comments})
+        return render(request, 'posts.html', {"instance":instance})
     else:
         if (request.user.is_staff or request.user.is_superuser):
-            return render(request, 'posts.html', {"instance":instance, "cat_list_2":cat_list_2, "form":form, "comments":comments})
+            return render(request, 'posts.html', {"instance":instance})
         else:
             raise Http404
-
-"""class Postlist(generic.ListView):s
-    queryset = art_gallery.objects.filter(status=1).order_by('-date_created')
-    template_name='engine.html'"""
     
 def postlist(request):
     if request.user.is_superuser:

@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'no_idea',
+    'blog',
     'django_summernote',
 
 ]
@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'null_project.urls'
+ROOT_URLCONF = 'django_blog.urls'
 
 TEMPLATES = [
     {
@@ -73,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'null_project.wsgi.application'
+WSGI_APPLICATION = 'django_blog.wsgi.application'
 
 
 # Database

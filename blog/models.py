@@ -1,6 +1,4 @@
 from django.db import models
-import os
-from django.contrib.auth.models import User
 from django.conf import settings
 from django.utils.text import slugify
 from django.urls import reverse
