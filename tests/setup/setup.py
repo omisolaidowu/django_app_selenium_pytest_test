@@ -27,7 +27,7 @@ desired_caps = {
 	}
 
 
-class testSet: 
+class Settings: 
        
     def __init__(self) -> None:
         self.grid_url = "https://{}:{}@hub.lambdatest.com/wd/hub".format(

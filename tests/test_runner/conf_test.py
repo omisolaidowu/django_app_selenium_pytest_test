@@ -1,22 +1,23 @@
 import pytest
 import sys
 sys.path.append(sys.path[0] + "/..")
-from setup.setup import testSet
+from setup.setup import Settings
 
 from sel_locators.sel_locators import Webactions
 
 from django.test import LiveServerTestCase
 
 
-setup = testSet()
+setup = Settings()
 website = Webactions(setup.driver)
 
 from django.contrib.auth.models import User
 
-@pytest.mark.django_db
 class TestUserLoginFormSuccess(LiveServerTestCase):
-   def test_view(self):
-      setup.testSetup()
+
+   
+   @pytest.mark.django_db
+   def test_should_post_blog(self):
 
       User.objects.create_user(
          'admin', 
@@ -46,3 +47,11 @@ class TestUserLoginFormSuccess(LiveServerTestCase):
       website.test_getWeb(str(website.current_url()))
       assert "Blog" in website.test_getTitle(), "Blog must be on the next page"
       setup.tearDown()
+
+# @pytest.mark.django_db
+# def sample():
+#    b = TestUserLoginFormSuccess()
+#    return b.should_post_blog()
+
+# def test_sample(sample):
+#    return sample()
