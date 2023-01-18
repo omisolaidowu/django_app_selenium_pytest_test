@@ -36,10 +36,14 @@ class Settings:
         self.desired_caps = desired_caps
         self.driver = webdriver.Remote(command_executor=self.grid_url, desired_capabilities= self.desired_caps)
         
-    def testSetup(self):
+    def setup(self):
         self.driver.implicitly_wait(10)
         self.driver.maximize_window()
     def tearDown(self):
         if (self.driver != None):
             print("Cleaning the test environment")
             self.driver.quit()
+
+
+
+

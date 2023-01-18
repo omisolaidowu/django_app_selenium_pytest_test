@@ -18,10 +18,10 @@ class Webactions:
     def __init__(self, driver) -> None:
         self.driver=driver
 
-    def test_getWeb(self, URL):
+    def getWeb(self, URL):
         self.driver.get(URL)
         
-    def test_getTitle(self):
+    def getTitle(self):
         return self.driver.title
 
     def current_url(self):
@@ -50,9 +50,7 @@ class Webactions:
 
     def submit_post(self):
         self.driver.find_element(By.ID, locate.blogSubmit).click()
-    
 
-    
 
 
 
