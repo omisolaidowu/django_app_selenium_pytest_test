@@ -94,6 +94,9 @@ DATABASES = {
 }
 
 
+DATABASES['default'] = dj_database_url.config(os.getenv('POSTGRES_URL'))
+
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -101,9 +104,7 @@ DATABASES = {
 #     }
 # }
 
-DATABASES['default'] = dj_database_url.config(
-    "postgresql://postgres:YRdhBaZKuy2PnDD61AIM@containers-us-west-19.railway.app:5689/railway"
-    )
+
 
 
 
