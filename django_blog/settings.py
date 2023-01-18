@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 from dotenv import load_dotenv
 load_dotenv('.env')
-
+import dj_database_url
+from decouple import config
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -84,12 +85,14 @@ WSGI_APPLICATION = 'django_blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'null_project',
+        'NAME': 'django_blog',
         'USER': 'postgres',
-        'PASSWORD': 'cmosbattery',
-        'HOST': 'localhost',
+        'PASSWORD': 'YRdhBaZKuy2PnDD61AIM',
+        'HOST': 'containers-us-west-19.railway.app',
+        'PORT': 5689,
     }
 }
+
 
 # DATABASES = {
 #     'default': {
@@ -97,6 +100,12 @@ DATABASES = {
 #         'NAME': BASE_DIR+"/"+'db.sqlite3',
 #     }
 # }
+
+DATABASES['default'] = dj_database_url.config(
+    "postgresql://postgres:YRdhBaZKuy2PnDD61AIM@containers-us-west-19.railway.app:5689/railway"
+    )
+
+
 
 
 
