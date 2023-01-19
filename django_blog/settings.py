@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('PROJECT_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -86,7 +86,7 @@ if DEBUG == False:
             'URL': os.getenv('POSTGRES_URL'),
             'NAME': 'railway',
             'USER': 'postgres',
-            'PASSWORD': 'YRdhBaZKuy2PnDD61AIM',
+            'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
             'HOST': 'containers-us-west-19.railway.app',
             'PORT': 5689,
         }
