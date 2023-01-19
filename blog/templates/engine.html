@@ -60,12 +60,25 @@ tinymce.init({
 		
 	</form>
 		<h1>Your Previous Posts</h1>
+
+
+		{% for my_list in queryset %}
+<p>{{ my_list.id }} - <strong>{{ my_list.title }}--</strong> 
+	<a href="/edit_post/{{my_list.pk}}-{{ my_list.user_id }}"> Edit Post</a> 
+	---   <a href="/delete/{{my_list.pk}}">Delete this Post</a>-- <strong>By {{my_list.user}}</strong></p>
+
+{% endfor %}
 		
-	{% for my_lis in my_list_1 %}
-<strong>{{my_lis.title}}</strong>  {% if user.is_authenticated %}<a href="/edit_post/{{my_lis.pk}}-{{ my_lis.user_id }}"> Edit Post</a>{% endif %} <strong>|</strong> <a href="/eachpost/{{ my_lis.slug }}-{{my_lis.category_id}}" style="text-decoration: none;">Preview Post</a> <strong>|</strong> Published = <strong>{{ my_lis.published }}</strong> <strong>|</strong> Filed under <strong>{{ my_lis.category.name }}</strong><br>
+	<!-- {% for my_lis in my_list_1 %}
+<strong>{{my_lis.title}}</strong>  {% if user.is_authenticated %}
+<a href="/edit_post/{{my_lis.pk}}-{{ my_lis.user_id }}">
+	 Edit Post</a>{% endif %} 
+<strong>|</strong> 
+<a href="/eachpost/{{ my_lis.slug }}" style="text-decoration: none;">Preview Post</a>
+ <strong>|</strong> Published = <strong>{{ my_lis.published }}</strong><br>
 
 
-	{% endfor %}
+	{% endfor %} -->
 	</div>
 		
 

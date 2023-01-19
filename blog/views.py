@@ -35,6 +35,8 @@ def home(request):
 
 def engine(request, user_id):
     if (request.user.is_staff or request.user.is_superuser):
+
+        
         
 
         if request.method=="POST":
@@ -47,11 +49,13 @@ def engine(request, user_id):
             return HttpResponseRedirect("/")
         else:
             postForm = my_engine()
-            context = {"postForm":postForm}
+            queryset=art_gallery.objects.all().order_by('-date_created')
     else:
         raise Http404
+
         
-    return render(request, 'engine.html', context)
+        
+    return render(request, 'engine.html', {"postForm":postForm, "queryset":queryset})
 
 
 def login(request):
@@ -133,7 +137,8 @@ def delete_post(request, pk):
         obj = get_object_or_404(art_gallery, pk=pk)
         if request.method=="POST":
             obj.delete()
-            return redirect('/postlist')
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(next)
     else:
         raise Http404
     return render(request, 'delete.html', {"obj":obj})
