@@ -55,12 +55,7 @@ def engine(request, user_id):
 
 
 def login(request):
-    User.objects.create_user(
-         'admin', 
-         'omisolaidowu@gmail.com,',
-       'cmosbattery',
-       is_superuser=True
-       )
+    
     if request.method=="POST":
         username=request.POST['username']
         password=request.POST['password']
