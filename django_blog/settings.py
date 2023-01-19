@@ -85,11 +85,19 @@ WSGI_APPLICATION = 'django_blog.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'URL': os.getenv('POSTGRES_URL'),
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'YRdhBaZKuy2PnDD61AIM',
+        'HOST': 'containers-us-west-19.railway.app',
+        'PORT': 5689,
+    }
 }
 
 
-DATABASES['default'] = dj_database_url.config(os.getenv('POSTGRES_URL'))
+# DATABASES['default'] = dj_database_url.config(os.getenv('POSTGRES_URL'))
 
 # psycopg2.connect(DATABASES)
 
