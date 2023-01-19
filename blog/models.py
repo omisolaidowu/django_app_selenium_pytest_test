@@ -81,4 +81,5 @@ def presavesignal(sender, instance, *args, **kwargs):
         instance.slug = createslug(instance)
 
 
+
 pre_save.connect(presavesignal, sender=art_gallery)

