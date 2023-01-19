@@ -36,6 +36,7 @@ class TestUserLoginFormSuccess(LiveServerTestCase):
       assert User.objects.count() == 1, "There should be only one superuser"
 
       blog.getWeb(self.live_server_url+'/login')
+      # blog.getWeb('https://django-app-selenium-pytest-test-w9rc.vercel.app/login')
       assert "Log" in blog.getTitle(), "Error, log not in title"
 
       blog.fill_username('admin')

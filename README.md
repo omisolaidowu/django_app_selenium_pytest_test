@@ -50,3 +50,5 @@ Blog-App
 │     └─ test_module.py
 └─ vercel.json
 ```
+
+This project is live at `https://django-app-selenium-pytest-test-w9rc.vercel.app`
