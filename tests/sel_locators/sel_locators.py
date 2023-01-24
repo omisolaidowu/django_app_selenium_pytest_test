@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from dataclasses import dataclass
 
 
 class formLocator:
@@ -14,9 +15,10 @@ class formLocator:
 
 locate = formLocator()
 
+
+@dataclass
 class Webactions:
-    def __init__(self, driver) -> None:
-        self.driver=driver
+    driver: object
 
     def getWeb(self, URL):
         self.driver.get(URL)
