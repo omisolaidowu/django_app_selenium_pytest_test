@@ -2,8 +2,6 @@ from django import forms
 from .models import art_gallery
 from .models import *
 
-from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
-
 
 class my_engine(forms.ModelForm):
 	published = forms.BooleanField(required=False).widget.attrs.update({'id': 'published'})

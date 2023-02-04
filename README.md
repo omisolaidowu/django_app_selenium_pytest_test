@@ -52,3 +52,33 @@ Blog-App
 ```
 
 This project is live at https://django-app-selenium-pytest-test.vercel.app/
+```
+Blog-App
+├─ .gitignore
+├─ blog
+│  ├─ admin.py
+│  ├─ apps.py
+│  ├─ forms.py
+│  ├─ models.py
+│  ├─ templates
+│  ├─ urls.py
+│  ├─ views.py
+├─ django_blog
+│  ├─ asgi.py
+│  ├─ settings.py
+│  ├─ urls.py
+│  ├─ wsgi.py
+├─ manage.py
+├─ pytest.ini
+├─ requirements.txt
+├─ tests
+│  ├─ conftest.py
+│  ├─ sel_locators
+│  │  └─ sel_locators.py
+│  ├─ setup
+│  │  └─ setup.py
+│  └─ test_runner
+│     └─ test_module.py
+└─ .env
+
+```

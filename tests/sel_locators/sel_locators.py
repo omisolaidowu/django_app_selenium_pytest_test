@@ -16,8 +16,9 @@ class formLocator:
 locate = formLocator()
 
 
+
 @dataclass
-class Webactions:
+class Webactions():
     driver: object
 
     def getWeb(self, URL):
@@ -52,8 +53,3 @@ class Webactions:
 
     def submit_post(self):
         self.driver.find_element(By.ID, locate.blogSubmit).click()
-
-
-
-
-

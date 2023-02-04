@@ -15,8 +15,7 @@ from django.shortcuts import redirect
 
 from django.contrib.auth.models import auth
 from django.core.paginator import Paginator
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.auth.models import User
+
 
 
 def catlist(request):

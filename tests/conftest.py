@@ -3,15 +3,22 @@ import pytest
 import os
 from dotenv import load_dotenv
 load_dotenv('.env')
+from django.test import LiveServerTestCase
 
 
-
-@pytest.fixture
+@pytest.fixture(scope="class")
 def superAdmin() -> User:
-    User.objects.create_user(
-         'admin', 
-         'omisolaidowu@gmail.com,',
+    return User.objects.create_user(
+         'omisolaidowu',  
+         'idowuomisola@gmail.com,',
        os.getenv('SUPER_ADMIN_PASSWORD'),
        is_superuser=True
        )
 
+
+@pytest.mark.usefixtures("superAdmin")
+class admin(LiveServerTestCase):
+  @pytest.fixture(autouse=True)
+  def super(self, superAdmin):
+    self.createSuperAdmin = superAdmin
+    return self.createSuperAdmin

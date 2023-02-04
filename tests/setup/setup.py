@@ -1,5 +1,4 @@
 from selenium import webdriver
-
 from dotenv import load_dotenv
 import os
 load_dotenv('.env')
@@ -15,12 +14,12 @@ desired_caps = {
 			"accessKey" : LT_ACCESS_KEY,
 			"build" : "Django Functional Testing",
 			"name" : "Django Test",
-			"platformName" : "Windows 10",
+			"platformName" : "Windows 11",
             "tunnel": True
 
 		},
-		"browserName" : "FireFox",
-		"browserVersion" : "103.0",
+		"browserName" : "Chrome",
+		"browserVersion" : "104.0",
         
 	}
 
@@ -38,10 +37,10 @@ class Settings:
         self.driver.implicitly_wait(10)
         self.driver.maximize_window()
     def tearDown(self):
-        if (self.driver != None):
-            print("Cleaning the test environment")
+        try:
+            if (self.driver != None):
+                print("Cleaning the test environment")
+                self.driver.quit()
+        except  AssertionError as e:
+            print(e)
             self.driver.quit()
-
-
-
-

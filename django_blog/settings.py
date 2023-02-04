@@ -21,7 +21,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.getenv('PROJECT_SECRET_KEY')
 
 SECRET_KEY = os.getenv('PROJECT_SECRET_KEY')
 
@@ -41,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'django_summernote',
 
 ]
 
@@ -152,8 +150,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'djangohost', 'media')
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
-
-SUMMERNOTE_CONFIG = {}
 
 
 # Content editor implementation:

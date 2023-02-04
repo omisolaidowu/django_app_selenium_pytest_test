@@ -1,46 +1,33 @@
-import pytest
-import sys
-sys.path.append(sys.path[0] + "/..")
 from setup.setup import Settings
 
-from django.test import LiveServerTestCase
-
+from conftest import admin
 
 from sel_locators.sel_locators import Webactions
-
-
-setup = Settings()
-
 
 from django.contrib.auth.models import User
 
 
-blog = Webactions(setup.driver)
+
+setUp = Settings()
 
 
-@pytest.mark.usefixtures("superAdmin")
-class TestUserLoginFormSuccess(LiveServerTestCase):
+blog = Webactions(setUp.driver)
 
-   @pytest.fixture(autouse=True)
-   def super(self, superAdmin):
-      self.createSuperAdmin = superAdmin
-      return self.createSuperAdmin
-      
+class TestUserLoginFormSuccess(admin):
 
    def test_should_post_blog(self):
-
-      setup.setup()
+      setUp.setup()
 
       self.createSuperAdmin
 
       assert User.objects.count() == 1, "There should be only one superuser"
 
       blog.getWeb(self.live_server_url+'/login')
-      # blog.getWeb('https://django-app-selenium-pytest-test-w9rc.vercel.app/login')
+      # blog.getWeb('https://django-app-selenium-pytest-test.vercel.app/login')
       assert "Log" in blog.getTitle(), "Error, log not in title"
 
-      blog.fill_username('admin')
-      blog.fill_password('cmosbattery')
+      blog.fill_username('omisolaidowu') 
+      blog.fill_password('idowupaul')
       blog.submit_login()
 
       blog.getWeb(str(blog.current_url()))
@@ -55,4 +42,4 @@ class TestUserLoginFormSuccess(LiveServerTestCase):
 
       blog.getWeb(str(blog.current_url()))
       assert "Blog" in blog.getTitle(), "Blog must be on the next page"
-      setup.tearDown()
+      setUp.tearDown()
