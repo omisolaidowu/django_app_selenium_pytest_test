@@ -11,6 +11,7 @@ urlpatterns = [
 	path('delete/<int:pk>/', views.delete_post, name='delete_post'),
 	path('userlist/<int:user_id>/', views.userlist, name='userlist'),
 	path('login/',  views.login, name='login'),
+	path('register/',  views.register, name='registeration'),
 	path('logout/',  views.logout, name='logout'),
 	path('catlist/', views.catlist, name='catlist'),
 

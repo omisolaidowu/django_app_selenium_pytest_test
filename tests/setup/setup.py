@@ -12,8 +12,8 @@ desired_caps = {
 		'LT:Options' : {
 			"user" : LT_GRID_USERNAME,
 			"accessKey" : LT_ACCESS_KEY,
-			"build" : "Django Functional Testing",
-			"name" : "Django Test",
+			"build" : "Django Functional Local Testing",
+			"name" : "Django Functional Test",
 			"platformName" : "Windows 11",
             "tunnel": True
 

@@ -1,17 +1,18 @@
-
-<body style="background-image: linear-gradient(red, green, green);">
-	<header>
-		<section>
-			<div>
-				<a href="/" style="text-decoration: none; color:grey"><strong>Home</strong></strong></a>
-			</div>
-		</section>
-	</header>
-	<form action='.' method="POST"> {% csrf_token %}
-		{{ form.as_p }}
-		
-		<input type='submit' value='Save' />
-		
-	</form>
-	
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register here as super-admin</title>
+</head>
+<body>
+<form action="." method="post">
+{% csrf_token %}
+<input required type="text" class="username-fill" name="username" placeholder="username"><br>
+<input required type="email" class="email-fill" name="email" placeholder="email address"><br>
+<input required type="password" class="password-fill" name="password" placeholder="password"><br>
+<input type="submit" name="Register">
+</form>
+{% for message in messages %}
+<div>{{ message }}</div>
+{% endfor %}
 </body>
+</html>

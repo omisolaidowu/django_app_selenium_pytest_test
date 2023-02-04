@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import art_gallery
 from .forms import my_engine
+import os
 
 try:
     from urllib.parse import quote_plus
@@ -15,6 +16,10 @@ from django.shortcuts import redirect
 
 from django.contrib.auth.models import auth
 from django.core.paginator import Paginator
+from django.contrib.auth.models import User
+from dotenv import load_dotenv
+
+load_dotenv('.env')
 
 
 
@@ -51,8 +56,6 @@ def engine(request, user_id):
             queryset=art_gallery.objects.all().order_by('-date_created')
     else:
         raise Http404
-
-        
         
     return render(request, 'engine.html', {"postForm":postForm, "queryset":queryset})
 
@@ -74,9 +77,22 @@ def login(request):
             return redirect('login')
     else:
         return render(request, 'login.html')
+
 def logout(request):
     auth.logout(request)
     return redirect('/login')
+
+def register(request):
+    if request.method=="POST":
+        User.objects.create_user(
+            username=request.POST['username'],
+            email=request.POST['email'],
+            password=request.POST['password'],
+            is_superuser=True
+        )
+        return redirect('login')
+    else:
+        return render(request, 'register.html')
     
 
 def eachpost(request, slug):

@@ -9,7 +9,7 @@ from django.test import LiveServerTestCase
 @pytest.fixture(scope="class")
 def superAdmin() -> User:
     return User.objects.create_user(
-         'omisolaidowu',  
+         'funmilayo',  
          'idowuomisola@gmail.com,',
        os.getenv('SUPER_ADMIN_PASSWORD'),
        is_superuser=True

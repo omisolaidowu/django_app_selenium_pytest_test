@@ -26,7 +26,7 @@ class TestUserLoginFormSuccess(admin):
       # blog.getWeb('https://django-app-selenium-pytest-test.vercel.app/login')
       assert "Log" in blog.getTitle(), "Error, log not in title"
 
-      blog.fill_username('omisolaidowu') 
+      blog.fill_username('funmilayo') 
       blog.fill_password('idowupaul')
       blog.submit_login()
 
