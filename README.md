@@ -21,39 +21,6 @@ Pytest will look for the pytest.ini module and use that to point the test to the
 
 ```
 Blog-App
-
-├─ .gitignore
-├─ manage.py
-├─ no_idea
-│  ├─ admin.py
-│  ├─ apps.py
-│  ├─ forms.py
-│  ├─ models.py
-│  ├─ templates
-│  ├─ urls.py
-│  ├─ views.py
-│  └─ __init__.py
-├─ null_project
-│  ├─ settings.py
-│  ├─ urls.py
-│  ├─ wsgi.py
-│  └─ __init__.py
-├─ pytest.ini
-├─ requirements.txt
-├─ tests
-│  ├─ conftest.py
-│  ├─ sel_locators
-│  │  └─ sel_locators.py
-│  ├─ setup
-│  │  └─ setup.py
-│  └─ test_runner
-│     └─ test_module.py
-└─ vercel.json
-```
-
-This project is live at https://django-app-selenium-pytest-test.vercel.app/
-```
-Blog-App
 ├─ .gitignore
 ├─ blog
 │  ├─ admin.py
@@ -79,6 +46,9 @@ Blog-App
 │  │  └─ setup.py
 │  └─ test_runner
 │     └─ test_module.py
+├─ vercel.json
 └─ .env
 
 ```
+
+This project is live at https://django-app-selenium-pytest-test.vercel.app/
