@@ -15,7 +15,7 @@ Run the test by using the pytest command:
 
 ```pytest```
 
-Pytest will look for the pytest.ini module and use that to point the test to the Django app settings. Pytest then automatically discovers declared test fixtures by looking inside the conftest.py file before running the test_module.py file. 
+Pytest will look for the pytest.ini module and use it to point the test to the Django app settings. Pytest then automatically discovers declared test fixtures by looking inside the conftest.py file before running the test_module.py file. 
 
 ## Project Structure
 
