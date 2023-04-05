@@ -82,11 +82,11 @@ if DEBUG == False:
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'URL': os.getenv('POSTGRES_URL'),
-            'NAME': 'railway',
-            'USER': 'postgres',
+            'NAME': 'idowutest',
+            'USER': 'idowutest_user',
             'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-            'HOST': 'containers-us-west-19.railway.app',
-            'PORT': 5689,
+            'HOST': 'dpg-cfln42ta499b93ctl140-a',
+            'PORT': 5432,
         }
     }
 else:
