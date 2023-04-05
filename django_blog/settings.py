@@ -75,6 +75,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'django_blog.wsgi.application'
 
 
+"PGPASSWORD=u2WqYHdUaMWeRNVnHi4VIGgM5ElcHYdx psql/"
+"-h dpg-cfln42ta499b93ctl140-a.oregon-postgres.render.com -U idowutest_user idowutest"
+
+
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 if DEBUG == True:
@@ -85,7 +89,7 @@ if DEBUG == True:
             'NAME': 'idowutest',
             'USER': 'idowutest_user',
             'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-            'HOST': 'dpg-cfln42ta499b93ctl140-a',
+            'HOST': 'dpg-cfln42ta499b93ctl140-a.oregon-postgres.render.com',
             'PORT': 5432,
         }
     }
