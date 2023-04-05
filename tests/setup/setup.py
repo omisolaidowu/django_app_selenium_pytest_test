@@ -4,13 +4,13 @@ import os
 load_dotenv('.env')
 
 
-LT_GRID_USERNAME = os.getenv("LT_GRID_USERNAME")
+LT_USERNAME = os.getenv("LT_USERNAME")
 LT_ACCESS_KEY = os.getenv("LT_ACCESS_KEY")
 
 
 desired_caps = {
 		'LT:Options' : {
-			"user" : LT_GRID_USERNAME,
+			"user" : LT_USERNAME,
 			"accessKey" : LT_ACCESS_KEY,
 			"build" : "Django Functional Local Testing",
 			"name" : "Django Functional Test",
@@ -28,7 +28,7 @@ class Settings:
        
     def __init__(self) -> None:
         self.grid_url = "https://{}:{}@hub.lambdatest.com/wd/hub".format(
-            LT_GRID_USERNAME, LT_ACCESS_KEY
+            LT_USERNAME, LT_ACCESS_KEY
             )
         self.desired_caps = desired_caps
         self.driver = webdriver.Remote(command_executor=self.grid_url, desired_capabilities= self.desired_caps)
