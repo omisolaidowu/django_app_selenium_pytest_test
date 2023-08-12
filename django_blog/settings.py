@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = os.getenv('PROJECT_SECRET_KEY')
+SECRET_KEY = "Somesecret"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -85,11 +85,11 @@ if DEBUG == False:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'URL': os.getenv('POSTGRES_URL'),
-            'NAME': 'idowutest',
-            'USER': 'idowutest_user',
-            'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-            'HOST': 'dpg-cfln42ta499b93ctl140-a.oregon-postgres.render.com',
+            'URL': os.getenv("POSTGRES_URL"),
+            'NAME': 'tgfairlb',
+            'USER': 'tgfairlb',
+            'PASSWORD':  os.getenv("POSTGRES_PASSWORD"),
+            'HOST': 'snuffleupagus.db.elephantsql.com',
             'PORT': 5432,
         }
     }
@@ -100,14 +100,6 @@ else:
         'NAME': BASE_DIR+"/"+'db.sqlite3',
     }
 }
-
-
-
-
-
-
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -171,8 +163,6 @@ TINYMCE_DEFAULT_CONFIG = {
     'image_advtab': True,
     'custom_undo_redo_levels': 10,
     'file_browser_callback': "myFileBrowser"
-
-
 
 }"""
 
